@@ -70,7 +70,6 @@ xlim([0 500])
 ylim([0 0.02])
 xlabel('freq (hz)')
 
-
 subplot(313)
 [Pcc, F] = pwelch(Convol,length(Convol),[],2^16,srate);
 hold off
@@ -174,7 +173,7 @@ ylabel('Power convol')
 
 %% Show Kernel walking on signal generating convolution result
 
-figure(1)
+figure(1), clf
 LFP= sin(2*pi*10*t);
 LFP = LFP + 0.3*randn(size(t));
 % padding with zeros
@@ -184,19 +183,18 @@ t = (1:length(LFP))*dt;
 for j = 0:2:length(LFP)-order
     
 subplot(211)
-plot(t,LFP)
-hold on
-plot(t((1:order)+j),K(order:-1:1),'r-','linew',2)
-hold off
-ylim([-4 4])
+    plot(t,LFP)
+    hold on
+    plot(t((1:order)+j),K(order:-1:1),'r-','linew',2)
+    hold off
+    ylim([-4 4])
 
 subplot(212)
-
-plot(t(order/2+j),sum(K(order:-1:1).*LFP((1:order)+j))/norm,'ko')
-hold on
-xlim([0 t(end)])
-ylim([- 4 4])
-pause(0.001)
+    plot(t(order/2+j),sum(K(order:-1:1).*LFP((1:order)+j))/norm,'ko')
+    hold on
+    xlim([0 t(end)])
+    ylim([- 4 4])
+    pause(0.001)
 end
 
 %% Eliminating convolution phase shifts
@@ -262,21 +260,20 @@ figure(1)
 for j = 0:2:length(LFP)-order
     
 subplot(211)
-plot(t,LFP)
-hold on
-plot(t((1:order)+j),K(order:-1:1),'k-','linew',2)
-plot(t(order/2+j),sum(K(order:-1:1).*LFP((1:order)+j))/norm, 'ko')
-% write code that indicates the point-to-point
-% value of the product K(.)*LFP(.)  
-hold off
-ylim([-4 4])
+    plot(t,LFP)
+    hold on
+    plot(t((1:order)+j),K(order:-1:1),'k-','linew',2)
+    plot(t(order/2+j),sum(K(order:-1:1).*LFP((1:order)+j))/norm, 'ko')
+    % write code that indicates the point-to-point
+    % value of the product K(.)*LFP(.)  
+    hold off
+    ylim([-4 4])
 
 subplot(212)
-
-plot(t(order/2+j),sum(K(order:-1:1).*LFP((1:order)+j))/norm, 'ko')
-hold on
-xlim([0 t(end)])
-ylim([- 4 4])
+    plot(t(order/2+j),sum(K(order:-1:1).*LFP((1:order)+j))/norm, 'ko')
+    hold on
+    xlim([0 t(end)])
+    ylim([- 4 4])
 pause
 end
 

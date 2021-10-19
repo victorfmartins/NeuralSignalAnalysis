@@ -100,34 +100,53 @@ dt = 1/srate; Tmax = 1; t = dt:dt:Tmax; % in s
 % create two signals of frequency f, with phase
 % difference of phi and with noise 
 phi = -deg2rad(45);
-X = 3*sin(2*pi*f*t)+0.3*randn(size(t));
+X = 2*sin(2*pi*f*t)+0.3*randn(size(t));
 Y = 0.5*sin(2*pi*f*t+phi)+0.3*randn(size(t));
+    
+ff = 8; % Frequency of Fourier Kernel
+K = exp(-1i*2*pi*ff*t); % Kernel
 
-subplot(311)
-    plot(t,X)
-    hold on
-    plot(t,Y)
-    hold off
+h1 = subplot(311);
+    plot(t,X,'b'), hold on
+    plot(t,Y,'r')
+    plot(t,real(K),'k'), hold off
     xlim([0 1])
     xlabel('Time (s)')
     ylabel('mv')
     title('Fake LFP')
 
-ff = 8; % Frequency of Fourier Kernel
-K = exp(-1i*2*pi*ff*t); % Kernel
-
+XX = X.*K;
+YY = Y.*K;
+    
 % actually, FX is the sum, we are using the 
 % mean just for visualization
-FX = mean(X.*K); 
-FY = mean(Y.*K);
+FX = mean(XX); disp(['FX = ' num2str(FX)])
+FY = mean(YY); disp(['FY = ' num2str(FY)])
 
-nFX = FX/abs(FX);
-nFY = FY/abs(FY);
+nFX = FX/abs(FX); disp(['nFX = ' num2str(nFX)])
+nFY = FY/abs(FY); disp(['nFY = ' num2str(nFY)])
 
+% plot to see how X.*K and Y.*K look like
+h2 = subplot(312);
+    plot(t,real(XX),'b','linew',2), hold on
+    plot(t,real(YY),'r','linew',2)
+%     plot(t,imag(XX),'b--')
+%     plot(t,imag(YY),'r--')
+    plot(t(end/2),real(nFX),'ko','MarkerFaceColor','b')
+    plot(t(end/2),real(nFY),'ko','MarkerFaceColor','r')
+    hold off
+    xlim([0 1])
+    xlabel('Time (s)')
+    ylabel('mv')
+    title('Pointwise Multiplication of Fake LFP with Kernel')
+
+linkaxes([h1 h2])
+% xlim([0 .2])
+    
 nFXY = nFX*conj(nFY); % coherence point of the freq ff
 % nFXY = FX*conj(FY)/(abs(FX)*abs(FY));
 
-subplot(3,1,[2 3])
+subplot(3,1,3)
     plot([real(FX)],[imag(FX)],'bo')
     hold on
     plot([0 real(FX)],[0 imag(FX)],'b-')
