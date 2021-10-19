@@ -15,11 +15,11 @@ Translated with www.DeepL.com/Translator (free version)
 
 ### ICE1010 - Discrete Signal Analysis
 Contents
-**Module 1:**
+#### Module 1:
 Rastergrams; Inter-Spike-Intervals (ISI); Peri-Stimulus Histograms (PSTH); Autocorrelation; Cross-correlation; Synchrony Measures; Spectral Power; Spike Correlation; Entropy and Information Theory.
-**Module 2:**
+#### Module 2:
 Neuronal Encoding and Decoding; Place Fields; Population Vectors; Neuronal Tuning; Node Cells; Classification Methods; PCA; ICA; MDA; Neural Networks; Application to Motion Reconstruction (Brain-Machine Interface).
-**Module 3:**
+#### Module 3:
 Spike-Triggered Average (STA); Spike coherence relative to local field potential; Histogram of Spike per phase; Circular statistics; Von Mises distribution; Rayleight test; Phase precession; Phase normalized spectral analysis.
 
 ### 📝 License
