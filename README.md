@@ -11,8 +11,6 @@ Convolutions; Filters; High pass; Low pass; Band pass; Notch filter; Induced/evo
 #### Module 3:
 Autocorrelation and cross-correlation; Getting the instantaneous phase and frequency; Representations in the complex plane; Phase-phase couplings; The coherence spectrum; Phase coupling indices; Circular statistics; The Rayleight test; Von Mises distribution; Phase-phase couplings between different frequencies; Oscillatory reset phenomena (induced vs evoked); Amplitude-amplitude couplings; Phase-amplitude couplings; Phase-frequency couplings.
 
-Translated with www.DeepL.com/Translator (free version)
-
 ### ICE1010 - Discrete Signal Analysis
 Contents
 #### Module 1:

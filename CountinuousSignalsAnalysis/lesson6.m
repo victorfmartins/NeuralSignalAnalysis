@@ -1,4 +1,4 @@
-%% Lesson 6 = 18/03/2021; (Lesson 5 generated list 2 resolution file)
+%% Lesson 6 = 18/03/2021; Coherence
 
 %% Understanding Phase Coherence
 
